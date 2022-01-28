@@ -30,3 +30,7 @@ You will need to add references to:
 Build the project.
 
 Browse to the newly created ```bin/Debug``` or ```bin/Release``` folders and copy the ```CameraToolsPlugin.dll``` to ```Steam\steamapps\common\TaleSpire\BepInEx\plugins```
+
+## Changelog
+- 3.0.0: Complete re-write by HolloFox due to breaking in Jan 2022
+- 2.3.0: Deployed to ThunderStore
