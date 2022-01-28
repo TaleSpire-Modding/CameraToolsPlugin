@@ -1,0 +1,10 @@
+{
+    "name": "CameraToolsPlugin",
+    "version_number": "2.3.0",
+    "website_url": "https://github.com/brcoding/moddingtalespire/",
+    "description": "Gives Player Camera Tools",
+    "dependencies": [
+        "bbepisTaleSpire-BepInExPack-5.4.10",
+	"brcoding-SetInjectionFlagPlugin-2.3.0"
+    ]
+}
