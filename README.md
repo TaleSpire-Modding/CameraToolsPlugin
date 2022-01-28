@@ -1,7 +1,6 @@
 # Camera Tools Plugin
-
-This is a plugin for TaleSpire using BepInEx.
-
+Camera tools Plugin allows you to tilt the camera at more extreme angles from looking straight down to straight up.
+Configuration is also provided to allow the user to alter their tilt range for the camera.
 
 ## Install
 
@@ -32,5 +31,6 @@ Build the project.
 Browse to the newly created ```bin/Debug``` or ```bin/Release``` folders and copy the ```CameraToolsPlugin.dll``` to ```Steam\steamapps\common\TaleSpire\BepInEx\plugins```
 
 ## Changelog
+- 3.0.1: Documentation
 - 3.0.0: Complete re-write by HolloFox due to breaking in Jan 2022
 - 2.3.0: Deployed to ThunderStore

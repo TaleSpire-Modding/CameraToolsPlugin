@@ -1,8 +1,8 @@
 {
     "name": "CameraToolsPlugin",
-    "version_number": "3.0.0",
+    "version_number": "3.0.1",
     "website_url": "https://github.com/TaleSpire-Modding/CameraToolsPlugin",
-    "description": "Gives Player Camera Tools, Re-written by HolloFox",
+    "description": "Increases tilt range for player camera, Re-written by HolloFox",
     "dependencies": [
         "bbepisTaleSpire-BepInExPack-5.4.10",
 	"brcoding-SetInjectionFlagPlugin-2.3.0"
