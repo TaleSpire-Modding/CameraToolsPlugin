@@ -2,11 +2,13 @@
 using BepInEx;
 using BepInEx.Configuration;
 using HarmonyLib;
+using LordAshes;
 
 namespace CameraToolsPlugin
 {
 
     [BepInPlugin(Guid, "HolloFoxes' Camera Tools Plug-In", Version)]
+    [BepInDependency(FileAccessPlugin.Guid)]
     public class CameraToolsPlugin : BaseUnityPlugin
     {
         // constants
@@ -16,6 +18,11 @@ namespace CameraToolsPlugin
         // Configs
         internal static ConfigEntry<float> minTilt { get; set; }
         internal static ConfigEntry<float> maxTilt { get; set; }
+
+        // Configs
+        internal static ConfigEntry<string> skyBox { get; set; }
+        internal static ConfigEntry<string> bundle { get; set; }
+
         /// <summary>
         /// Awake plugin
         /// </summary>
@@ -25,6 +32,10 @@ namespace CameraToolsPlugin
 
             minTilt = Config.Bind("Tilt Limit", "minimum", -124f);
             maxTilt = Config.Bind("Tilt Limit", "maximum", 53f);
+
+            skyBox = Config.Bind("Sky Box", "box name", "DarkStorm");
+            bundle = Config.Bind("Sky Box", "bundle name", "hfskyboxes01");
+
 
             Debug.Log("CameraTools Plug-in loaded");
 
