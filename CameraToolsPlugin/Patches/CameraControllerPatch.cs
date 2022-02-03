@@ -1,6 +1,4 @@
 ﻿using HarmonyLib;
-using LordAshes;
-using UnityEngine;
 
 namespace CameraToolsPlugin.Patches
 {

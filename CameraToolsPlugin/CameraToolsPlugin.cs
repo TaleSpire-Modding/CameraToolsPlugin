@@ -4,24 +4,27 @@ using BepInEx;
 using BepInEx.Configuration;
 using CameraToolsPlugin.Patches;
 using HarmonyLib;
-using LordAshes;
+
 
 namespace CameraToolsPlugin
 {
 
     [BepInPlugin(Guid, "HolloFoxes' Camera Tools Plug-In", Version)]
-    [BepInDependency(FileAccessPlugin.Guid)]
-    public class CameraToolsPlugin : BaseUnityPlugin
+    public partial class CameraToolsPlugin : BaseUnityPlugin
     {
         // constants
         public const string Guid = "org.hollofox.plugins.CameraToolsPlugin";
-        internal const string Version = "3.0.0";
+        internal const string Version = "3.1.2";
 
         
 
         // Configs
         internal static ConfigEntry<float> minTilt { get; set; }
         internal static ConfigEntry<float> maxTilt { get; set; }
+
+        // Configs
+        internal static ConfigEntry<KeyCode> setLocale { get; set; }
+        internal static ConfigEntry<KeyCode> render { get; set; }
 
         // Configs
         internal static ConfigEntry<string> skyBox { get; set; }
@@ -37,6 +40,9 @@ namespace CameraToolsPlugin
             minTilt = Config.Bind("Tilt Limit", "minimum", -124f);
             maxTilt = Config.Bind("Tilt Limit", "maximum", 53f);
 
+            setLocale = Config.Bind("Ortho Render", "setLocale", KeyCode.P);
+            render = Config.Bind("Ortho Render", "render", KeyCode.U);
+
             skyBox = Config.Bind("Sky Box", "box name", "DarkStorm");
             bundle = Config.Bind("Sky Box", "bundle name", "hfskyboxes01");
 
@@ -48,15 +54,15 @@ namespace CameraToolsPlugin
             harmony.PatchAll();
         }
 
-        void LateUpdate()
+        void Update()
         { 
             
-            if (Input.GetKeyUp(KeyCode.P))
+            if (Input.GetKeyUp(setLocale.Value))
             {
                 SystemMessage.AskForTextInput("Size of Render", "Rectangle area to render in Tiles","sure",myAction, delegate { });
             }
 
-            if (Input.GetKeyUp(KeyCode.U))
+            if (Input.GetKeyUp(render.Value))
             {
                 if(!OrtoCameraModeAwakePatch.isOverRideHeight) OrtoCameraModeAwakePatch.SetResolution();
                 OrtoCameraModeAwakePatch.isOverRideHeight = !OrtoCameraModeAwakePatch.isOverRideHeight;
