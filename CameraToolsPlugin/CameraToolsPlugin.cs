@@ -23,8 +23,10 @@ namespace CameraToolsPlugin
         internal static ConfigEntry<float> maxTilt { get; set; }
 
         // Configs
-        internal static ConfigEntry<KeyCode> setLocale { get; set; }
-        internal static ConfigEntry<KeyCode> render { get; set; }
+        internal static ConfigEntry<KeyboardShortcut> setLocale { get; set; }
+        internal static ConfigEntry<KeyboardShortcut> render { get; set; }
+        internal static ConfigEntry<int> pxTile { get; set; }
+        internal static ConfigEntry<bool> othroRenderEnabled { get; set; }
 
         // Configs
         internal static ConfigEntry<string> skyBox { get; set; }
@@ -40,8 +42,10 @@ namespace CameraToolsPlugin
             minTilt = Config.Bind("Tilt Limit", "minimum", -124f);
             maxTilt = Config.Bind("Tilt Limit", "maximum", 53f);
 
-            setLocale = Config.Bind("Ortho Render", "setLocale", KeyCode.P);
-            render = Config.Bind("Ortho Render", "render", KeyCode.U);
+            setLocale = Config.Bind("Ortho Render", "setLocale", new KeyboardShortcut(KeyCode.P), "Key to save coordinates used to determine render area.");
+            render = Config.Bind("Ortho Render", "render", new KeyboardShortcut(KeyCode.U), "Key to get the camera to render the screen shot");
+            pxTile = Config.Bind("Ortho Render", "Pixels per Tile", 75,"Pixels per tile is an approximation thus an average");
+            othroRenderEnabled = Config.Bind("Ortho Render", "Enabled", false,"Ortho feature is enabled for use");
 
             skyBox = Config.Bind("Sky Box", "box name", "DarkStorm");
             bundle = Config.Bind("Sky Box", "bundle name", "hfskyboxes01");
@@ -55,19 +59,22 @@ namespace CameraToolsPlugin
         }
 
         void Update()
-        { 
-            
-            if (Input.GetKeyUp(setLocale.Value))
+        {
+            if (!othroRenderEnabled.Value) 
+                return;
+
+            if (setLocale.Value.IsUp())
             {
-                SystemMessage.AskForTextInput("Size of Render", "Rectangle area to render in Tiles","sure",myAction, delegate { });
+                SystemMessage.AskForTextInput("Size of Render", "Rectangle area to render in Tiles", "sure",
+                    myAction, delegate { });
             }
 
-            if (Input.GetKeyUp(render.Value))
+            if (render.Value.IsUp())
             {
-                if(!OrtoCameraModeAwakePatch.isOverRideHeight) OrtoCameraModeAwakePatch.SetResolution();
+                if (!OrtoCameraModeAwakePatch.isOverRideHeight) OrtoCameraModeAwakePatch.SetResolution();
                 OrtoCameraModeAwakePatch.isOverRideHeight = !OrtoCameraModeAwakePatch.isOverRideHeight;
             }
-
+            
             if (OrtoCameraModeAwakePatch.isOverRideHeight)
             {
                 CameraController.GetCamera().transform.position

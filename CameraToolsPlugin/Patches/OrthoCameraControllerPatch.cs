@@ -108,8 +108,8 @@ namespace CameraToolsPlugin.Patches
         {
             Camera Mcamera = camera;
             c = Mcamera;
-            int rw = width*75;
-            int rh = height*75;
+            int rw = width * CameraToolsPlugin.pxTile.Value;
+            int rh = height * CameraToolsPlugin.pxTile.Value;
             RenderTexture rt = new RenderTexture(rw, rh, 24);
             Mcamera.targetTexture = rt;
             Texture2D ss = new Texture2D(rw, rh, TextureFormat.RGB24, false);
@@ -121,7 +121,6 @@ namespace CameraToolsPlugin.Patches
                 return;
             using (NativeArray<Unity.Rendering.FrustumPlanes.PlanePacket4> planePacketsForCam = ZoneGpuState.GetPlanePacketsForCam(ActiveCameraManagerPatch._camera, ActiveCameraManagerPatch._tmpCamPlanes, Allocator.TempJob))
                 ActiveCameraManagerPatch._boardSessionManager.Render(ActiveCameraManagerPatch._camera, planePacketsForCam);
-
             Mcamera.Render();
 
             RenderTexture.active = rt;
