@@ -42,10 +42,11 @@ namespace CameraToolsPlugin
             minTilt = Config.Bind("Tilt Limit", "minimum", -124f);
             maxTilt = Config.Bind("Tilt Limit", "maximum", 53f);
 
-            setLocale = Config.Bind("Ortho Render", "setLocale", new KeyboardShortcut(KeyCode.P), "Key to save coordinates used to determine render area.");
-            render = Config.Bind("Ortho Render", "render", new KeyboardShortcut(KeyCode.U), "Key to get the camera to render the screen shot");
+            othroRenderEnabled = Config.Bind("Ortho Render", "Enabled", false, "Ortho feature is enabled for use");
+            setLocale = Config.Bind("Ortho Render", "setLocale shortcut", new KeyboardShortcut(KeyCode.P), "Key to save coordinates used to determine render area.");
+            render = Config.Bind("Ortho Render", "render shortcut", new KeyboardShortcut(KeyCode.U), "Key to get the camera to render the screen shot");
             pxTile = Config.Bind("Ortho Render", "Pixels per Tile", 75,"Pixels per tile is an approximation thus an average");
-            othroRenderEnabled = Config.Bind("Ortho Render", "Enabled", false,"Ortho feature is enabled for use");
+            
 
             skyBox = Config.Bind("Sky Box", "box name", "DarkStorm");
             bundle = Config.Bind("Sky Box", "bundle name", "hfskyboxes01");
