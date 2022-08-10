@@ -13,13 +13,11 @@ namespace CameraToolsPlugin.Patches
     [HarmonyPatch(typeof(ActiveCameraManager), "LateUpdate")]
     internal class ActiveCameraManagerPatch
     {
-        internal static Plane[] _tmpCamPlanes;
         internal static Camera _camera;
         internal static BoardSessionManager _boardSessionManager;
-        internal static void Prefix(ref Plane[] ____tmpCamPlanes, ref Camera ____camera, ref BoardSessionManager ____boardSessionManager)
+        internal static void Prefix(ref Camera ____camera, ref BoardSessionManager ____boardSessionManager)
         {
             _camera = ____camera;
-            _tmpCamPlanes = ____tmpCamPlanes;
             _boardSessionManager = ____boardSessionManager;
         }
     }
@@ -119,8 +117,8 @@ namespace CameraToolsPlugin.Patches
 
             if (ActiveCameraManagerPatch._boardSessionManager == null)
                 return;
-            using (NativeArray<Unity.Rendering.FrustumPlanes.PlanePacket4> planePacketsForCam = ZoneGpuState.GetPlanePacketsForCam(ActiveCameraManagerPatch._camera, ActiveCameraManagerPatch._tmpCamPlanes, Allocator.TempJob))
-                ActiveCameraManagerPatch._boardSessionManager.Render(ActiveCameraManagerPatch._camera, planePacketsForCam);
+            // using (NativeArray<Unity.Rendering.FrustumPlanes.PlanePacket4> planePacketsForCam = ZoneGpuState.GetPlanePacketsForCam(ActiveCameraManagerPatch._camera, ActiveCameraManagerPatch._tmpCamPlanes, Allocator.TempJob))
+            //     ActiveCameraManagerPatch._boardSessionManager.OnRender(ActiveCameraManagerPatch._camera, planePacketsForCam);
             Mcamera.Render();
 
             RenderTexture.active = rt;

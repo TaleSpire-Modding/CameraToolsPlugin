@@ -49,9 +49,6 @@
     <Reference Include="Bouncyrock.BouncePackage.Runtime">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\TaleSpire\TaleSpire_Data\Managed\Bouncyrock.BouncePackage.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Bouncyrock.BouncePackage.TaleSpire.Runtime">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\TaleSpire\TaleSpire_Data\Managed\Bouncyrock.BouncePackage.TaleSpire.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Bouncyrock.BouncePhysics.Runtime">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\TaleSpire\TaleSpire_Data\Managed\Bouncyrock.BouncePhysics.Runtime.dll</HintPath>
     </Reference>
@@ -73,8 +70,9 @@
     <Reference Include="Bouncyrock.TaleSpire.DataModel.Runtime">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\TaleSpire\TaleSpire_Data\Managed\Bouncyrock.TaleSpire.DataModel.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Bouncyrock.TaleSpire.Runtime">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\TaleSpire\TaleSpire_Data\Managed\Bouncyrock.TaleSpire.Runtime.dll</HintPath>
+    <Reference Include="Bouncyrock.TaleSpire.Runtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\automationdlls\TaleSpireDlls\Bouncyrock.TaleSpire.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="HarmonyXInterop">
       <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\TaleSpire\profiles\Default\BepInEx\core\HarmonyXInterop.dll</HintPath>
@@ -102,6 +100,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SetInjectionFlagPlugin">
+      <HintPath>..\..\SetInjectionFlag\SetInjectionFlag\bin\Debug\SetInjectionFlagPlugin.dll</HintPath>
     </Reference>
     <Reference Include="ShapesRuntime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -383,10 +384,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CameraToolsPlugin.cs" />
-    <Compile Include="ModdingUtil.cs" />
     <Compile Include="Patches\OrthoCameraControllerPatch.cs" />
     <Compile Include="Patches\CameraControllerPatch.cs" />
-    <Compile Include="Patches\scratch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

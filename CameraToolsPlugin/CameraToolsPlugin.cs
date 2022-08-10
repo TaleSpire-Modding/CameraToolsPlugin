@@ -4,17 +4,19 @@ using BepInEx;
 using BepInEx.Configuration;
 using CameraToolsPlugin.Patches;
 using HarmonyLib;
+using PluginUtilities;
 
 
 namespace CameraToolsPlugin
 {
 
     [BepInPlugin(Guid, "HolloFoxes' Camera Tools Plug-In", Version)]
+    [BepInDependency(SetInjectionFlag.Guid)]
     public partial class CameraToolsPlugin : BaseUnityPlugin
     {
         // constants
         public const string Guid = "org.hollofox.plugins.CameraToolsPlugin";
-        internal const string Version = "3.2.0";
+        internal const string Version = "3.2.1";
 
         
 
@@ -50,7 +52,6 @@ namespace CameraToolsPlugin
 
             skyBox = Config.Bind("Sky Box", "box name", "DarkStorm");
             bundle = Config.Bind("Sky Box", "bundle name", "hfskyboxes01");
-
 
             Debug.Log("CameraTools Plug-in loaded");
 
