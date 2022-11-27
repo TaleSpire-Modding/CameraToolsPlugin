@@ -27,6 +27,7 @@ Build the project.
 Browse to the newly created ```bin/Debug``` or ```bin/Release``` folders and copy the ```CameraToolsPlugin.dll``` to ```Steam\steamapps\common\TaleSpire\BepInEx\plugins```
 
 ## Changelog
+```
 - 3.3.0: net48 upgrade
 - 3.2.1: Fixed util file for Cyberpunk Update
 - 3.2.0: disabled the ortho renderer shortcut, can be re-enabled in config. Now supports shortcut instead of keycode (may need to delete config file if duplicate entries are showing up).
@@ -36,3 +37,4 @@ Browse to the newly created ```bin/Debug``` or ```bin/Release``` folders and cop
 - 3.0.1: Documentation
 - 3.0.0: Complete re-write by HolloFox due to breaking in Jan 2022
 - 2.3.0: Deployed to ThunderStore
+```
