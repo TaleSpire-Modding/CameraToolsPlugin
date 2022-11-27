@@ -16,9 +16,7 @@ namespace CameraToolsPlugin
     {
         // constants
         public const string Guid = "org.hollofox.plugins.CameraToolsPlugin";
-        internal const string Version = "0.0.0";
-
-        
+        internal const string Version = "0.0.0.0";
 
         // Configs
         internal static ConfigEntry<float> minTilt { get; set; }
