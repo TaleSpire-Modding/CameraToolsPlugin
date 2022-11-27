@@ -10,13 +10,13 @@ using PluginUtilities;
 namespace CameraToolsPlugin
 {
 
-    [BepInPlugin(Guid, "HolloFoxes' Camera Tools Plug-In", Version)]
+    [BepInPlugin(Guid, "Camera Tools Plug-In", Version)]
     [BepInDependency(SetInjectionFlag.Guid)]
     public partial class CameraToolsPlugin : BaseUnityPlugin
     {
         // constants
         public const string Guid = "org.hollofox.plugins.CameraToolsPlugin";
-        internal const string Version = "3.2.1";
+        internal const string Version = "0.0.0";
 
         
 
@@ -31,8 +31,8 @@ namespace CameraToolsPlugin
         internal static ConfigEntry<bool> othroRenderEnabled { get; set; }
 
         // Configs
-        internal static ConfigEntry<string> skyBox { get; set; }
-        internal static ConfigEntry<string> bundle { get; set; }
+        // internal static ConfigEntry<string> skyBox { get; set; }
+        // internal static ConfigEntry<string> bundle { get; set; }
 
         /// <summary>
         /// Awake plugin
@@ -49,13 +49,12 @@ namespace CameraToolsPlugin
             render = Config.Bind("Ortho Render", "render shortcut", new KeyboardShortcut(KeyCode.U), "Key to get the camera to render the screen shot");
             pxTile = Config.Bind("Ortho Render", "Pixels per Tile", 75,"Pixels per tile is an approximation thus an average");
             
-
-            skyBox = Config.Bind("Sky Box", "box name", "DarkStorm");
-            bundle = Config.Bind("Sky Box", "bundle name", "hfskyboxes01");
+            // skyBox = Config.Bind("Sky Box", "box name", "DarkStorm");
+            // bundle = Config.Bind("Sky Box", "bundle name", "hfskyboxes01");
 
             Debug.Log("CameraTools Plug-in loaded");
 
-            ModdingTales.ModdingUtils.Initialize(this, Logger);
+            ModdingTales.ModdingUtils.Initialize(this, Logger, "HolloFoxes'");
             var harmony = new Harmony(Guid);
             harmony.PatchAll();
         }
