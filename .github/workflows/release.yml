@@ -40,7 +40,7 @@ jobs:
       - name: Build
         shell: pwsh
         run: |
-          cd SetInjectionFlag
+          cd CameraToolsPlugin
           $pluginValue = (Get-Content ${{steps.package.outputs.PLUGIN}}) -Replace "0.0.0.0", "${{steps.package.outputs.VERSION_NUMBER}}.0" 
           $projectValue = (Get-Content ${{steps.package.outputs.PROJECT}}) -Replace "<Version>0.0.0</Version>", "<Version>${{steps.package.outputs.VERSION_NUMBER}}</Version>" 
           Set-Content ${{steps.package.outputs.PLUGIN}} -Value $pluginValue
@@ -51,7 +51,7 @@ jobs:
       - name: Publish
         shell: pwsh
         run: |
-          cd SetInjectionFlag/bin/Release
+          cd CameraToolsPlugin/bin/Release
           dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json --skip-duplicate
           dotnet nuget push *.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }} --skip-duplicate
           
