@@ -1,4 +1,6 @@
 # Camera Tools Plugin
+[![Nuget Published](https://github.com/TaleSpire-Modding/CameraToolsPlugin/actions/workflows/release.yml/badge.svg)](https://github.com/TaleSpire-Modding/CameraToolsPlugin/actions/workflows/release.yml)
+
 Camera tools Plugin allows you to tilt the camera at more extreme angles from looking straight down to straight up.
 Configuration is also provided to allow the user to alter their tilt range for the camera.
 
@@ -19,18 +21,6 @@ Planned update of the experimental ortho feature will occur for better experienc
 ## How to Compile / Modify
 
 Open ```CameraToolsPlugin.sln``` in Visual Studio.
-
-You will need to add references to:
-
-```
-* BepInEx.dll  (Download from the BepInEx project.)
-* Bouncyrock.TaleSpire.Runtime (found in Steam\steamapps\common\TaleSpire\TaleSpire_Data\Managed)
-* UnityEngine.dll
-* UnityEngine.CoreModule.dll
-* UnityEngine.InputLegacyModule.dll 
-* UnityEngine.UI
-* Unity.TextMeshPro
-```
 
 Build the project.
 
