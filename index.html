@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CameraToolsPlugin: Main Page</title>
+<title>CameraToolsPlugin: Camera Tools Plugin</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,11 +63,47 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">CameraToolsPlugin Documentation</div>  </div>
+<div class="title">Camera Tools Plugin </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_CameraToolsPlugin_README"></a><a href="https://github.com/TaleSpire-Modding/CameraToolsPlugin/actions/workflows/release.yml"><img src="https://github.com/TaleSpire-Modding/CameraToolsPlugin/actions/workflows/release.yml/badge.svg" alt="Nuget Published" style="pointer-events: none;" class="inline"/></a></p>
+<p>Camera tools Plugin allows you to tilt the camera at more extreme angles from looking straight down to straight up. Configuration is also provided to allow the user to alter their tilt range for the camera.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Install</h1>
+<p>Go to the releases folder and download the latest and extract to the contents of your TaleSpire game folder.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Usage</h1>
+<ol type="1">
+<li>You can modify the config to adjust freedom of tilt for your camera</li>
+<li>Rendering a map in Ortho Graphics:</li>
+</ol>
+<ul>
+<li>Whilst in a map first press "P". An input box will be asking for a Vector4 in the following format <code>x1,y1,x2,y2</code> e.g. <code>0,0,10,10</code> This will configure the view being rendered.</li>
+<li>Now in OrtoMode by pressing f6 and going into orto mode, you can press "U" to render the map. This will take longer bigger the 2 points are.</li>
+<li>You will find your screenshot in your steamapps e.g. <code>C:\Program Files (x86)\Steam\steamapps\common\TaleSpire\TaleSpire_Data\Photos</code>. This is with the rest of your normally aquired screenshots.</li>
+<li>The maps are currently rendered at 75 pixels per tile and due to BR rendering pipeline, it has a FOV of 2 meaning some artifacting will occur at the edge. Best way to avoid this is to render more of the map and crop.</li>
+</ul>
+<p>Planned update of the experimental ortho feature will occur for better experience and configurability.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+How to Compile / Modify</h1>
+<p>Open <code>CameraToolsPlugin.sln</code> in Visual Studio.</p>
+<p>Build the project.</p>
+<p>Browse to the newly created <code>bin/Debug</code> or <code>bin/Release</code> folders and copy the <code>CameraToolsPlugin.dll</code> to <code>Steam\steamapps\common\TaleSpire\BepInEx\plugins</code></p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Changelog</h1>
+<div class="fragment"><div class="line">- 3.3.1: Fix UI Bug</div>
+<div class="line">- 3.3.0: net48 upgrade</div>
+<div class="line">- 3.2.1: Fixed util file for Cyberpunk Update</div>
+<div class="line">- 3.2.0: disabled the ortho renderer shortcut, can be re-enabled in config. Now supports shortcut instead of keycode (may need to delete config file if duplicate entries are showing up).</div>
+<div class="line">- 3.1.2: Fixed dependency issue</div>
+<div class="line">- 3.1.1: Move render to Update and add config to keybinds</div>
+<div class="line">- 3.1.0: Experimental Mass render for map in &quot;ortho&quot; mode</div>
+<div class="line">- 3.0.1: Documentation</div>
+<div class="line">- 3.0.0: Complete re-write by HolloFox due to breaking in Jan 2022</div>
+<div class="line">- 2.3.0: Deployed to ThunderStore</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
