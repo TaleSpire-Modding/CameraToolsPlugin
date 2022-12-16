@@ -10,10 +10,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: TaleSpire-Modding/doxygen-github-pages-action@v1.2.1
+      - uses: TaleSpire-Modding/doxygen-github-pages-action@v1.2.6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: docs/html
           config_file: Doxyfile
           manifest_file: manifest.json
+          project_location: CameraToolsPlugin
