@@ -25,7 +25,7 @@ namespace CameraToolsPlugin
             replicatorTypeNames.Add("LineIndicator(Clone)", ReplicatorType.Line);
             replicatorTypeNames.Add("SphereIndicator(Clone)", ReplicatorType.Circle);
 
-            Debug.Log("Subscribing To RulerEvents");
+            logSource.LogDebug("Subscribing To RulerEvents");
             RulerBoardTool.OnCloseRulers += RulerBoardTool_OnCloseRulers;
             _callback = callback;
         }
@@ -55,7 +55,7 @@ namespace CameraToolsPlugin
 
         private void RulerBoardTool_OnCloseRulers()
         {
-            Debug.Log("Ruler Event Complete");
+            logSource.LogDebug("Ruler Event Complete");
             RulerBoardTool.OnCloseRulers -= RulerBoardTool_OnCloseRulers;
             _callback(waypoints.ToArray(), _rulerType);
         }

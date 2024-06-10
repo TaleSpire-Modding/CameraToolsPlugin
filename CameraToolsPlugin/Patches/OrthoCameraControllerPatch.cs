@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.IO;
 using HarmonyLib;
-using Tweening;
-using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using Screen = UnityEngine.Screen;
@@ -64,10 +61,10 @@ namespace CameraToolsPlugin.Patches
 
                 var cam = CameraController.GetCamera().transform;
                 ___rootTransform.Translate(xpos - ___rootTransform.localPosition.x, 0,zpos - ___rootTransform.localPosition.z, Space.World);
-                Debug.Log($"({Screen.currentResolution.width},{Screen.currentResolution.height})");
+                CameraToolsPlugin.logSource.LogDebug($"({Screen.currentResolution.width},{Screen.currentResolution.height})");
                 res = Screen.currentResolution;
                 Screen.SetResolution(75*width,75*height,true);
-                Debug.Log($"({Screen.currentResolution.width},{Screen.currentResolution.height})");
+                CameraToolsPlugin.logSource.LogDebug($"({Screen.currentResolution.width},{Screen.currentResolution.height})");
                 savePic = true;
                 return false;
             }
@@ -131,7 +128,7 @@ namespace CameraToolsPlugin.Patches
 
             string filename = Path.Combine(FileB.EnsureDir(Path.Combine(Application.dataPath, "Photos")), "TS_" + DateTimeOffset.UtcNow.ToUnixTimeSeconds() + ".png");
             System.IO.File.WriteAllBytes(filename, bytes);
-            Debug.Log(string.Format("Took screenshot to: {0}", filename));
+            CameraToolsPlugin.logSource.LogDebug(string.Format("Took screenshot to: {0}", filename));
         }
     }
 }

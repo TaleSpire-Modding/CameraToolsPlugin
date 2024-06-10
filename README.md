@@ -28,6 +28,7 @@ Browse to the newly created ```bin/Debug``` or ```bin/Release``` folders and cop
 
 ## Changelog
 ```
+- 3.3.2: Seats fix
 - 3.3.1: Fix UI Bug
 - 3.3.0: net48 upgrade
 - 3.2.1: Fixed util file for Cyberpunk Update

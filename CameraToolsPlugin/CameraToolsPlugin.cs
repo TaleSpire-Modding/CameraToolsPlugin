@@ -5,7 +5,7 @@ using BepInEx.Configuration;
 using CameraToolsPlugin.Patches;
 using HarmonyLib;
 using PluginUtilities;
-
+using BepInEx.Logging;
 
 namespace CameraToolsPlugin
 {
@@ -17,6 +17,7 @@ namespace CameraToolsPlugin
         // constants
         public const string Guid = "org.hollofox.plugins.CameraToolsPlugin";
         internal const string Version = "0.0.0.0";
+        internal static ManualLogSource logSource;
 
         // Configs
         internal static ConfigEntry<float> minTilt { get; set; }
@@ -37,6 +38,7 @@ namespace CameraToolsPlugin
         /// </summary>
         void Awake()
         {
+            logSource = Logger;
             Logger.LogInfo("In Awake for Camera Tools");
 
             minTilt = Config.Bind("Tilt Limit", "minimum", -124f);
@@ -50,9 +52,9 @@ namespace CameraToolsPlugin
             // skyBox = Config.Bind("Sky Box", "box name", "DarkStorm");
             // bundle = Config.Bind("Sky Box", "bundle name", "hfskyboxes01");
 
-            Debug.Log("CameraTools Plug-in loaded");
+            Logger.LogDebug("CameraTools Plug-in loaded");
 
-            ModdingTales.ModdingUtils.Initialize(this, Logger, "HolloFoxes'");
+            ModdingTales.ModdingUtils.AddPluginToMenuList(this, "HolloFoxes'");
             var harmony = new Harmony(Guid);
             harmony.PatchAll();
         }
