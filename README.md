@@ -21,6 +21,7 @@ Browse to the newly created ```bin/Debug``` or ```bin/Release``` folders and cop
 
 ## Changelog
 ```
+- 3.4.1: migrate to DependencyUnityPlugins<T> to allow enable/disable the plugin without uninstalling it via chainloader
 - 3.4.0: DependencyUnityPlugins is now used and implement logic for unpatching, updated pipeline
 - 3.3.3: Fully remove legacy Ortho renderer code.
 - 3.3.2: Seats fix

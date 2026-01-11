@@ -10,7 +10,7 @@ namespace CameraToolsPlugin
 
     [BepInPlugin(Guid, "Camera Tools Plug-In", Version)]
     [BepInDependency(SetInjectionFlag.Guid)]
-    public partial class CameraToolsPlugin : DependencyUnityPlugin
+    public partial class CameraToolsPlugin : DependencyUnityPlugin<CameraToolsPlugin>
     {
         // constants
         public const string Guid = "org.hollofox.plugins.CameraToolsPlugin";
@@ -23,14 +23,9 @@ namespace CameraToolsPlugin
 
         Harmony harmony;
 
-        /// <summary>
-        /// Awake plugin
-        /// </summary>
-        protected override void OnAwake()
+        
+        protected override void OnSetupConfig(ConfigFile config)
         {
-            logSource = Logger;
-            Logger.LogInfo("In Awake for Camera Tools");
-
             ConfigDescription minTiltDescription = new ConfigDescription("", null,
                 new ConfigurationAttributes
                 {
@@ -45,8 +40,15 @@ namespace CameraToolsPlugin
 
             MinTilt = Config.Bind("Tilt Limit", "minimum", -124f, minTiltDescription);
             MaxTilt = Config.Bind("Tilt Limit", "maximum", 53f, maxTiltDescription);
+        }
 
-            Logger.LogDebug("CameraTools Plug-in loaded");
+        /// <summary>
+        /// Awake plugin
+        /// </summary>
+        protected override void OnAwake()
+        {
+            logSource = Logger;
+            Logger.LogInfo("In Awake for Camera Tools");
 
             harmony = new Harmony(Guid);
             harmony.PatchAll();
@@ -64,7 +66,8 @@ namespace CameraToolsPlugin
         /// </summary>
         private void UpdateTiltFromConfig(object o)
         {
-            RootTargetCameraModeAwakePatch.UpdateTilt(MinTilt.Value, MaxTilt.Value);
+            if (Enabled)
+                RootTargetCameraModeAwakePatch.UpdateTilt(MinTilt.Value, MaxTilt.Value);
         }
 
         protected override void OnDestroyed()
